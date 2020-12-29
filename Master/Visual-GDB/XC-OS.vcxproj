@@ -1,0 +1,845 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{72A597B1-92E6-4DD9-BA40-9D1683040424}</ProjectGuid>
+    <BSP_ID>com.sysprogs.arm.stm32</BSP_ID>
+    <BSP_VERSION>2020.06</BSP_VERSION>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ToolchainID>com.visualgdb.arm-eabi</ToolchainID>
+    <ToolchainVersion>9.3.1/9.2.0/r2</ToolchainVersion>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>GNUPP14</CPPLanguageStandard>
+      <AdditionalIncludeDirectories>..\ArduinoAPI;..\Libraries\FreeRTOS;..\Libraries\FreeRTOS\Source\include;..\Libraries\FreeRTOS\Source\portable\GCC\ARM_CM4F;..\Libraries\lua-5.3.2\src;..\Libraries\SdFat\src;..\XC-OS;..\XC-OS\GUI;..\Libraries\Adafruit_GFX_Library;..\Libraries\cm_backtrace;..\Libraries\I2Cdev;..\Libraries\MPU6050;..\Libraries;..\Libraries\lvgl;..\Libraries\BMP280_DEV;..\Libraries\ClosedCube_SHT31D;..\Core;..\Libraries\SoftwareSPI;../Libraries/FATFS;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>DEBUG=1;USE_STDPERIPH_DRIVER;ARDUINO=111;LV_CONF_INCLUDE_SIMPLE;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions />
+      <CLanguageStandard />
+    </ClCompile>
+    <Link>
+      <LibrarySearchDirectories>%(Link.LibrarySearchDirectories)</LibrarySearchDirectories>
+      <AdditionalLibraryNames>%(Link.AdditionalLibraryNames)</AdditionalLibraryNames>
+      <AdditionalLinkerInputs>%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>
+      <LinkerScript />
+      <AdditionalOptions />
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <ClCompile>
+      <CPPLanguageStandard>GNUPP11</CPPLanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ArduinoAPI\Arduino.c" />
+    <ClCompile Include="..\ArduinoAPI\dtostrf.c" />
+    <ClCompile Include="..\ArduinoAPI\HardwareSerial.cpp" />
+    <ClCompile Include="..\ArduinoAPI\itoa.c" />
+    <ClCompile Include="..\ArduinoAPI\Print.cpp" />
+    <ClCompile Include="..\ArduinoAPI\SPI.cpp" />
+    <ClCompile Include="..\ArduinoAPI\Stream.cpp" />
+    <ClCompile Include="..\ArduinoAPI\Tone.cpp" />
+    <ClCompile Include="..\ArduinoAPI\Wire.cpp" />
+    <ClCompile Include="..\ArduinoAPI\WireBase.cpp" />
+    <ClCompile Include="..\ArduinoAPI\WMath.cpp" />
+    <ClCompile Include="..\ArduinoAPI\WString.cpp" />
+    <ClCompile Include="..\Core\adc.c" />
+    <ClCompile Include="..\Core\delay.c" />
+    <ClCompile Include="..\Core\exti.c" />
+    <ClCompile Include="..\Core\flash.c" />
+    <ClCompile Include="..\Core\fsmc.c" />
+    <ClCompile Include="..\Core\gpio.c" />
+    <ClCompile Include="..\Core\pwm.c" />
+    <ClCompile Include="..\Core\rng.c" />
+    <ClCompile Include="..\Core\system_stm32f4xx.c" />
+    <ClCompile Include="..\Core\timer.c" />
+    <ClCompile Include="..\Libraries\Adafruit_GFX_Library\Adafruit_GFX.cpp" />
+    <ClCompile Include="..\Libraries\BMP280_DEV\BMP280_DEV.cpp" />
+    <ClCompile Include="..\Libraries\BMP280_DEV\Device.cpp" />
+    <ClCompile Include="..\Libraries\ClosedCube_SHT31D\ClosedCube_SHT31D.cpp" />
+    <ClCompile Include="..\Libraries\cm_backtrace\cm_backtrace.c" />
+    <ClCompile Include="..\Libraries\EEPROM_File\EEPROM_File.cpp" />
+    <ClCompile Include="..\Libraries\FATFS\diskio.c" />
+    <ClCompile Include="..\Libraries\FATFS\ff.c" />
+    <ClCompile Include="..\Libraries\FATFS\option\cc936.c" />
+    <ClCompile Include="..\Libraries\FATFS\option\syscall.c" />
+    <ClCompile Include="..\Libraries\FATFS\SdioDriver\sdio_sd.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\cpu_utils.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\croutine.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\event_groups.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\list.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\portable\GCC\ARM_CM4F\port.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\printf-stdarg.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\queue.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\stream_buffer.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\tasks.c" />
+    <ClCompile Include="..\Libraries\FreeRTOS\Source\timers.c" />
+    <ClCompile Include="..\Libraries\FT54X6\FT54X6.cpp" />
+    <ClCompile Include="..\Libraries\I2Cdev\I2Cdev.cpp" />
+    <ClCompile Include="..\Libraries\IP5108\IP5108.cpp" />
+    <ClCompile Include="..\Libraries\LightGUI\PageManager\PageManager.cpp" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lapi.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lauxlib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lbaselib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lbitlib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lcode.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lcorolib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lctype.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\ldblib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\ldebug.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\ldo.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\ldump.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lfunc.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lgc.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\linit.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\liolib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\llex.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lmathlib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lmem.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\loadlib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lobject.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lopcodes.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\loslib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lparser.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lstate.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lstring.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lstrlib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\ltable.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\ltablib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\ltm.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lua.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\luac.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lundump.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lutf8lib.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lvm.c" />
+    <ClCompile Include="..\Libraries\lua-5.3.2\src\lzio.c" />
+    <ClCompile Include="..\Libraries\lvgl\porting\lv_port_disp_template.c" />
+    <ClCompile Include="..\Libraries\lvgl\porting\lv_port_fs_template.c" />
+    <ClCompile Include="..\Libraries\lvgl\porting\lv_port_indev_template.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_core\lv_debug.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_core\lv_disp.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_core\lv_group.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_core\lv_indev.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_core\lv_obj.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_core\lv_refr.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_core\lv_style.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw_arc.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw_basic.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw_img.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw_label.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw_line.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw_rect.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_draw_triangle.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_img_cache.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_draw\lv_img_decoder.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_fmt_txt.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_roboto_12.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_roboto_12_subpx.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_roboto_16.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_roboto_22.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_roboto_28.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_roboto_28_compressed.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_font\lv_font_unscii_8.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_hal\lv_hal_disp.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_hal\lv_hal_indev.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_hal\lv_hal_tick.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_anim.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_area.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_async.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_bidi.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_circ.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_color.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_fs.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_gc.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_ll.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_log.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_math.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_mem.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_printf.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_task.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_templ.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_txt.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_misc\lv_utils.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_arc.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_bar.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_btn.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_btnm.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_calendar.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_canvas.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_cb.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_chart.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_cont.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_cpicker.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_ddlist.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_gauge.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_img.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_imgbtn.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_kb.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_label.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_led.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_line.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_list.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_lmeter.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_mbox.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_objx_templ.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_page.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_preload.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_roller.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_slider.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_spinbox.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_sw.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_ta.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_table.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_tabview.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_tileview.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_objx\lv_win.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_alien.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_default.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_material.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_mono.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_nemo.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_night.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_templ.c" />
+    <ClCompile Include="..\Libraries\lvgl\src\lv_themes\lv_theme_zen.c" />
+    <ClCompile Include="..\Libraries\MPU6050\MPU6050.cpp" />
+    <ClCompile Include="..\Libraries\NRF\NRF_Basic.cpp" />
+    <ClCompile Include="..\Libraries\NRF\NRF_FHSS.cpp" />
+    <ClCompile Include="..\Libraries\NRF\NRF_TRM.cpp" />
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\FatFile.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\FatFileLFN.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\FatFilePrint.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\FatFileSFN.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\FatVolume.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\FmtNumber.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\fstream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\istream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\ostream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\FatLib\StdioStream.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\MinimumSerial.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\SdCard\SdioCard.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\SdCard\SdioCardEX.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\SdCard\SdSpiCard.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\SdCard\SdSpiCardEX.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SdFat\src\SpiDriver\SdSpiSTM32.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="..\Libraries\SoftwareSPI\SoftwareSPI.cpp" />
+    <ClCompile Include="..\Libraries\UTFT\UTFT.cpp" />
+    <ClCompile Include="..\XC-OS\APP\BvPlayer\BV_Player\BV_Player.cpp" />
+    <ClCompile Include="..\XC-OS\APP\BvPlayer\Page_BvPlayer.cpp" />
+    <ClCompile Include="..\XC-OS\APP\FileExplorer\Page_FileExplorer.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\ab_logo.c" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2Audio.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2Beep.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2Core.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\glcdfont.c" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\Sprites.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy2\SpritesB.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy\Arduboy.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy\audio\audio.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Arduboy\core\core.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\GameDisp.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\GameManager.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Page_Game.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Game\Page_GameSelect.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Home\HomeAnim.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Home\HomeIcon.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Home\Page_Home.cpp" />
+    <ClCompile Include="..\XC-OS\APP\LuaIDE\Page_LuaScript.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Settings\lv_settings\lv_settings.c" />
+    <ClCompile Include="..\XC-OS\APP\Settings\Page_Settings.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Settings\SettingsAbout.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Settings\SettingsBattery.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Settings\SettingsDisplay.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Settings\SettingsMain.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Settings\SettingsRadio.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Settings\SettingsSound.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Shell\Interface_FileSystem.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Shell\Interface_HW.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Shell\Interface_Shell.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Shell\Page_Shell.cpp" />
+    <ClCompile Include="..\XC-OS\APP\Shell\Shell\Shell.c" />
+    <ClCompile Include="..\XC-OS\APP\Shell\XC_COM\CRC32.c" />
+    <ClCompile Include="..\XC-OS\APP\Shell\XC_COM\XC_COM.cpp" />
+    <ClCompile Include="..\XC-OS\APP\SubDev\Page_SubDev.cpp" />
+    <ClCompile Include="..\XC-OS\APP\TextEditor\Page_TextEditor.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\FastFFT\FastFFT.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\FFT.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\Lyric.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\Lyric_Analyzer\Lyric_Analyzer.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\MusicList.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\Page_WavPlayer.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\WavDecoder\wav_decoder.cpp" />
+    <ClCompile Include="..\XC-OS\APP\WavPlayer\WavPlayer.cpp" />
+    <ClCompile Include="..\XC-OS\Basic\main.cpp" />
+    <ClCompile Include="..\XC-OS\Basic\rt_sys.cpp" />
+    <ClCompile Include="..\XC-OS\Basic\system.c" />
+    <ClCompile Include="..\XC-OS\BSP\BSP_Audio.cpp" />
+    <ClCompile Include="..\XC-OS\BSP\BSP_Backlight.cpp" />
+    <ClCompile Include="..\XC-OS\BSP\BSP_IMU.cpp" />
+    <ClCompile Include="..\XC-OS\BSP\BSP_MemoryPool.cpp" />
+    <ClCompile Include="..\XC-OS\BSP\BSP_Motor.cpp" />
+    <ClCompile Include="..\XC-OS\BSP\BSP_Power.cpp" />
+    <ClCompile Include="..\XC-OS\BSP\BSP_Sensor.cpp" />
+    <ClCompile Include="..\XC-OS\Communication\ComBasic.cpp" />
+    <ClCompile Include="..\XC-OS\Communication\RCX\crc.cpp" />
+    <ClCompile Include="..\XC-OS\Communication\RCX\Master\RCX_Channel.cpp" />
+    <ClCompile Include="..\XC-OS\Communication\RCX\Master\RCX_Handshake.cpp" />
+    <ClCompile Include="..\XC-OS\Communication\RCX\Master\RCX_Package.cpp" />
+    <ClCompile Include="..\XC-OS\Communication\RCX\Master\RCX_Passback.cpp" />
+    <ClCompile Include="..\XC-OS\Game\ArduboyGraph2\graph2.cpp" />
+    <ClCompile Include="..\XC-OS\Game\ArduboyLife\ArduboyLife.cpp" />
+    <ClCompile Include="..\XC-OS\Game\BoneShakers\BoneShakers.cpp" />
+    <ClCompile Include="..\XC-OS\Game\BoneShakers\Draw.cpp" />
+    <ClCompile Include="..\XC-OS\Game\BoneShakers\FixedMath.cpp" />
+    <ClCompile Include="..\XC-OS\Game\BoneShakers\Font.cpp" />
+    <ClCompile Include="..\XC-OS\Game\BoneShakers\Game.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Building.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Connectivity.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Draw.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Font.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Game.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Interface.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\MicroCity.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Simulation.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Strings.cpp" />
+    <ClCompile Include="..\XC-OS\Game\MicroCity\Terrain.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayAppWin.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayBar.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayBasic.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayChinese.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayDropDownList.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayError.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayOSState.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\DisplayWidget.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\Fonts\FontAwesome.c" />
+    <ClCompile Include="..\XC-OS\GUI\Fonts\simhei.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgBattery.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgCode.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgCPU.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgEditor.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgExplorer.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgFiles.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgGame.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgMessage.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgMusic.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgOS.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgPlay.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgRAM.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgROM.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgSettings.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgSubApps.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgTerminal.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgUSB.c" />
+    <ClCompile Include="..\XC-OS\GUI\IMG\ImgVideo.c" />
+    <ClCompile Include="..\XC-OS\GUI\lv_ext_func.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\lv_port_disp.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\lv_port_fs.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\Page\Page_About.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\Page\Page_BattInfo.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\Page\Page_BattInfoOld.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\Page\Page_EXAMPLE.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\Page\Page_RadioCfg.cpp" />
+    <ClCompile Include="..\XC-OS\GUI\Page\Page_SetDisplay.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\LuaBasic.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\LuaBSP.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\LuaCom.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\LuaGPIO.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\LuaLVGL.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\LuaScript.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\LuaTime.cpp" />
+    <ClCompile Include="..\XC-OS\LuaInterface\lua_tinker.cpp" />
+    <ClCompile Include="system_stm32f4xx.c" />
+    <ClInclude Include="..\ArduinoAPI\Arduino.h" />
+    <ClInclude Include="..\ArduinoAPI\binary.h" />
+    <ClInclude Include="..\ArduinoAPI\dtostrf.h" />
+    <ClInclude Include="..\ArduinoAPI\HardwareSerial.h" />
+    <ClInclude Include="..\ArduinoAPI\itoa.h" />
+    <ClInclude Include="..\ArduinoAPI\libmaple_types.h" />
+    <ClInclude Include="..\ArduinoAPI\Print.h" />
+    <ClInclude Include="..\ArduinoAPI\Printable.h" />
+    <ClInclude Include="..\ArduinoAPI\SPI.h" />
+    <ClInclude Include="..\ArduinoAPI\Stream.h" />
+    <ClInclude Include="..\ArduinoAPI\Tone.h" />
+    <ClInclude Include="..\ArduinoAPI\WCharacter.h" />
+    <ClInclude Include="..\ArduinoAPI\Wire.h" />
+    <ClInclude Include="..\ArduinoAPI\WireBase.h" />
+    <ClInclude Include="..\ArduinoAPI\wirish_math.h" />
+    <ClInclude Include="..\ArduinoAPI\WMath.h" />
+    <ClInclude Include="..\ArduinoAPI\WProgram.h" />
+    <ClInclude Include="..\ArduinoAPI\WString.h" />
+    <ClInclude Include="..\Core\adc.h" />
+    <ClInclude Include="..\Core\delay.h" />
+    <ClInclude Include="..\Core\exti.h" />
+    <ClInclude Include="..\Core\flash.h" />
+    <ClInclude Include="..\Core\fsmc.h" />
+    <ClInclude Include="..\Core\gpio.h" />
+    <ClInclude Include="..\Core\mcu_type.h" />
+    <ClInclude Include="..\Core\pwm.h" />
+    <ClInclude Include="..\Core\rng.h" />
+    <ClInclude Include="..\Core\stm32f4xx_conf.h" />
+    <ClInclude Include="..\Core\timer.h" />
+    <ClInclude Include="..\Libraries\cm_backtrace\cmb_cfg.h" />
+    <ClInclude Include="..\Libraries\cm_backtrace\cmb_def.h" />
+    <ClInclude Include="..\Libraries\cm_backtrace\cm_backtrace.h" />
+    <ClInclude Include="..\Libraries\FATFS\diskio.h" />
+    <ClInclude Include="..\Libraries\FATFS\ff.h" />
+    <ClInclude Include="..\Libraries\FATFS\ffconf.h" />
+    <ClInclude Include="..\Libraries\FATFS\integer.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\FreeRTOSConfig.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\cpu_utils.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\croutine.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\deprecated_definitions.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\event_groups.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\FreeRTOS.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\list.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\message_buffer.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\mpu_prototypes.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\mpu_wrappers.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\projdefs.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\queue.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\semphr.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\StackMacros.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\stack_macros.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\stream_buffer.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\task.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\include\timers.h" />
+    <ClInclude Include="..\Libraries\FreeRTOS\Source\portable\GCC\ARM_CM4F\portmacro.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lapi.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lauxlib.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lcode.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lctype.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\ldebug.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\ldo.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lfunc.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lgc.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\llex.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\llimits.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lmem.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lobject.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lopcodes.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lparser.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lprefix.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lstate.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lstring.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\ltable.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\ltm.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lua.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\luaconf.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lualib.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lundump.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lvm.h" />
+    <ClInclude Include="..\Libraries\lua-5.3.2\src\lzio.h" />
+    <ClInclude Include="..\Libraries\lvgl\lvgl.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_conf_checker.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_core\lv_debug.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_core\lv_disp.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_core\lv_group.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_core\lv_indev.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_core\lv_obj.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_core\lv_refr.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_core\lv_style.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw_arc.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw_basic.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw_img.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw_label.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw_line.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw_rect.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_draw_triangle.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_img_cache.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_draw\lv_img_decoder.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_font\lv_font.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_font\lv_font_fmt_txt.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_font\lv_symbol_def.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_hal\lv_hal.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_hal\lv_hal_disp.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_hal\lv_hal_indev.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_hal\lv_hal_tick.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_anim.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_area.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_async.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_bidi.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_circ.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_color.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_fs.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_gc.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_ll.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_log.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_math.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_mem.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_printf.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_task.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_templ.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_txt.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_types.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_misc\lv_utils.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_arc.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_bar.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_btn.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_btnm.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_calendar.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_canvas.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_cb.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_chart.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_cont.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_cpicker.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_ddlist.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_gauge.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_img.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_imgbtn.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_kb.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_label.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_led.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_line.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_list.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_lmeter.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_mbox.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_objx_templ.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_page.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_preload.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_roller.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_slider.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_spinbox.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_sw.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_ta.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_table.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_tabview.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_tileview.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_objx\lv_win.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_alien.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_default.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_material.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_mono.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_nemo.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_night.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_templ.h" />
+    <ClInclude Include="..\Libraries\lvgl\src\lv_themes\lv_theme_zen.h" />
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\ArduinoFiles.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\ArduinoStream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\BaseBlockDriver.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\bufstream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FatApiConstants.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FatFile.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FatFileSystem.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FatLib.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FatLibConfig.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FatStructs.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FatVolume.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\FmtNumber.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\fstream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\ios.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\iostream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\istream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\ostream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FatLib\StdioStream.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\FreeStack.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\MinimumSerial.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SdCard\SdInfo.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SdCard\SdioCard.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SdCard\SdSpiCard.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SdFat.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SdFatConfig.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\sdios.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SpiDriver\DigitalPin.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SpiDriver\SdSpiBaseDriver.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SpiDriver\SdSpiDriver.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SpiDriver\SoftSPI.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\Libraries\SdFat\src\SysCall.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">true</ExcludedFromBuild>
+    </ClInclude>
+    <ClInclude Include="..\XC-OS\APP\BvPlayer\BV_Player\BvType.h" />
+    <ClInclude Include="..\XC-OS\APP\BvPlayer\BV_Player\BV_Player.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2Audio.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2Beep.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy2\Arduboy2Core.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy2\Sprites.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy2\SpritesB.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy2\SpritesCommon.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy\Arduboy.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy\audio\audio.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\Arduboy\core\core.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\GameDisp.h" />
+    <ClInclude Include="..\XC-OS\APP\Game\GamePrivate.h" />
+    <ClInclude Include="..\XC-OS\APP\Home\HomePrivate.h" />
+    <ClInclude Include="..\XC-OS\APP\Settings\lv_settings\lv_settings.h" />
+    <ClInclude Include="..\XC-OS\APP\Settings\SettingsPrivate.h" />
+    <ClInclude Include="..\XC-OS\APP\Shell\ShellPrivate.h" />
+    <ClInclude Include="..\XC-OS\APP\Shell\Shell\Shell.h" />
+    <ClInclude Include="..\XC-OS\APP\Shell\XC_COM\CRC32.h" />
+    <ClInclude Include="..\XC-OS\APP\Shell\XC_COM\XC_COM.h" />
+    <ClInclude Include="..\XC-OS\APP\SubDev\ShellNode.h" />
+    <ClInclude Include="..\XC-OS\APP\TextEditor\TextEditorPrivate.h" />
+    <ClInclude Include="..\XC-OS\APP\WavPlayer\FastFFT\FastFFT.h" />
+    <ClInclude Include="..\XC-OS\APP\WavPlayer\Lyric_Analyzer\Lyric_Analyzer.h" />
+    <ClInclude Include="..\XC-OS\APP\WavPlayer\WavDecoder\wav_decoder.h" />
+    <ClInclude Include="..\XC-OS\APP\WavPlayer\WavPlayer_Private.h" />
+    <ClInclude Include="..\XC-OS\Basic\CommonMacro.h" />
+    <ClInclude Include="..\XC-OS\Basic\FileGroup.h" />
+    <ClInclude Include="..\XC-OS\Basic\SysConfig.h" />
+    <ClInclude Include="..\XC-OS\Basic\TasksManage.h" />
+    <ClInclude Include="..\XC-OS\BSP\BSP.h" />
+    <ClInclude Include="..\XC-OS\BSP\IMU_Private.h" />
+    <ClInclude Include="..\XC-OS\Communication\ComPrivate.h" />
+    <ClInclude Include="..\XC-OS\Communication\RCX\crc.h" />
+    <ClInclude Include="..\XC-OS\Communication\RCX\Master\RCX.h" />
+    <ClInclude Include="..\XC-OS\Communication\RCX\RCX_Handshake.h" />
+    <ClInclude Include="..\XC-OS\Communication\RCX\RCX_Type.h" />
+    <ClInclude Include="..\XC-OS\Communication\XC_Type.h" />
+    <ClInclude Include="..\XC-OS\Game\ArduboyGraph2\AlertBox\alertBox.h" />
+    <ClInclude Include="..\XC-OS\Game\ArduboyGraph2\extend.h" />
+    <ClInclude Include="..\XC-OS\Game\ArduboyGraph2\Function\function.h" />
+    <ClInclude Include="..\XC-OS\Game\ArduboyGraph2\Icons\icons.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Building.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Connectivity.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Defines.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Draw.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Font.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Game.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Interface.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\LogoBitmap.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Simulation.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Strings.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Terrain.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Terrain1.inc.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Terrain2.inc.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\Terrain3.inc.h" />
+    <ClInclude Include="..\XC-OS\Game\MicroCity\TileData.h" />
+    <ClInclude Include="..\XC-OS\GUI\DisplayPrivate.h" />
+    <ClInclude Include="..\XC-OS\GUI\lv_conf.h" />
+    <ClInclude Include="..\XC-OS\GUI\Page\APP_Type.h" />
+    <ClInclude Include="..\XC-OS\LuaInterface\LuaScript.h" />
+    <ClInclude Include="..\XC-OS\LuaInterface\lua_tinker.h" />
+    <None Include="stm32.props" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\StartupFiles\startup_stm32f429xx.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\misc.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_adc.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_can.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cec.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_crc.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_aes.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_des.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_cryp_tdes.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dac.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dbgmcu.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dcmi.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dfsdm.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dma2d.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_dsi.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_exti.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_flash_ramfunc.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_fmpi2c.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_md5.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_hash_sha1.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_i2c.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_iwdg.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_lptim.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_ltdc.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_pwr.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_qspi.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rng.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rtc.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sai.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_sdio.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spdifrx.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_spi.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_syscfg.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_tim.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_usart.c" />
+    <ClCompile Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_wwdg.c" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\misc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_adc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_can.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cec.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_crc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_cryp.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dac.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dbgmcu.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dcmi.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dfsdm.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dma2d.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_dsi.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_exti.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_flash_ramfunc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fmpi2c.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_fsmc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_hash.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_i2c.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_iwdg.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_lptim.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_ltdc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_pwr.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_qspi.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rng.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rtc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sai.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_sdio.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spdifrx.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_spi.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_syscfg.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_tim.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_usart.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_wwdg.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Device\ST\STM32F4xx\Include\stm32f4xx.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Device\ST\STM32F4xx\Include\system_stm32f4xx.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\arm_common_tables.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\arm_const_structs.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\arm_math.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cm0.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cm0plus.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cm3.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cm4.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cm7.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cmFunc.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cmInstr.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_cmSimd.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_sc000.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\Include\core_sc300.h" />
+    <ClInclude Include="$(BSP_ROOT)\STM32F4xxxx\CMSIS_StdPeriph\RTOS\Template\cmsis_os.h" />
+    <None Include="XC-OS-Debug.vgdbsettings" />
+    <None Include="XC-OS-Release.vgdbsettings" />
+    <None Include="stm32.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <LinkerScript Include="STM32F429VG_flash.lds" />
+  </ItemGroup>
+</Project>
