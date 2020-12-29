@@ -1,9 +1,9 @@
 
 #include "mp3_decoder.h"
 #include "mp3dec.h"
-#include "BSP/BSP_MemoryPool.h"
+//#include "BSP/BSP_MemoryPool.h"
 #include "Basic/SysConfig.h"
-
+#include "tinyalloc/tinyalloc.h"
 
 //#define MP3_DEBUG_PRINTF(format, ...) Serial.printf(format, ##__VA_ARGS__)
 #define MP3_DEBUG_PRINTF(format, ...)
@@ -120,11 +120,11 @@ bool mp3_get_info(const char *pname, __mp3ctrl* pctrl)
 	short samples_per_frame;	//一帧的采样个数
 	u32 totframes;				//总帧数
 	
-	buf = (uint8_t*)MemPool_Malloc(5 * 1024);
+	buf = (uint8_t*)ta_alloc(5 * 1024);
 	if(buf == NULL)
 	{
 		MP3_DEBUG_PRINTF("memory fail\r\n");
-		MemPool_Free(buf);
+		ta_free(buf);
 		return false;
 	}
 	
@@ -132,7 +132,7 @@ bool mp3_get_info(const char *pname, __mp3ctrl* pctrl)
 	if(!res)
 	{
 		MP3_DEBUG_PRINTF("file read fail\r\n");
-		MemPool_Free(buf);
+		ta_free(buf);
 		return false;
 	}
 	
@@ -207,12 +207,12 @@ bool mp3_get_info(const char *pname, __mp3ctrl* pctrl)
 	}else//未找到同步帧
 	{
 		MP3_DEBUG_PRINTF("Synchronization frame not found\r\n");
-		MemPool_Free(buf);
+		ta_free(buf);
 		return false;
 	}
 	__totframes = totframes;
 	__totsec = pctrl->totsec;
-	MemPool_Free(buf);
+	ta_free(buf);
 	return true;
 }
 
@@ -394,7 +394,7 @@ bool mp3_init(String path, File fp, uint8_t **fbp, short **buf, int **size)
 	}
 	
 	//读取MP3信息
-	mp3ctrl = (__mp3ctrl*)MemPool_Malloc(sizeof(__mp3ctrl));
+	mp3ctrl = (__mp3ctrl*)ta_alloc(sizeof(__mp3ctrl));
 	memset(mp3ctrl,0,sizeof(__mp3ctrl));//数据清零 
 	bool res = mp3_get_info(path.c_str(), mp3ctrl);
 	if(!res)
@@ -408,16 +408,16 @@ bool mp3_init(String path, File fp, uint8_t **fbp, short **buf, int **size)
 	MP3_DEBUG_PRINTF(mp3ctrl->outsamples);
 	MP3_DEBUG_PRINTF(mp3ctrl->datastart);
 	*/
-	MemPool_Free(mp3ctrl);
+	ta_free(mp3ctrl);
 	
-	mp3_tempbuf = (short*)MemPool_Malloc(MP3BUFFER_SIZE*2);
+	mp3_tempbuf = (short*)ta_alloc(MP3BUFFER_SIZE*2);
 	if(mp3_tempbuf == NULL)
 	{
 		MP3_DEBUG_PRINTF("mp3_tempbuf NULL\r\n");
 		return false;	/* 停止播放 */
 	}
 	
-	_mp3_dma_size = (int*)MemPool_Malloc(sizeof(int));
+	_mp3_dma_size = (int*)ta_alloc(sizeof(int));
 	if(_mp3_dma_size == NULL)
 	{
 		MP3_DEBUG_PRINTF("_mp3_dma_size NULL\r\n");
@@ -432,7 +432,7 @@ bool mp3_init(String path, File fp, uint8_t **fbp, short **buf, int **size)
 	file_p.read( _file_buffer_p, MP3INPUTBUF_SIZE);
 	if(file_p.get_error() != FR_OK)
 	{
-		MemPool_Free(_file_buffer_p);
+		ta_free(_file_buffer_p);
 		_file_buffer_p = NULL;
 		MP3_DEBUG_PRINTF("FileRead%sfail -> %d\r\n", file_p.get_error());
 		MP3FreeDecoder(Mp3Decoder);
@@ -458,6 +458,9 @@ bool mp3_init(String path, File fp, uint8_t **fbp, short **buf, int **size)
 void mp3_deinit()
 {
 	MP3FreeDecoder(Mp3Decoder);
+    
+    ta_free(mp3_tempbuf);
+    ta_free(_mp3_dma_size);
 }
 
 

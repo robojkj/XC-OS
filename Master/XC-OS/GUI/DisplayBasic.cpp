@@ -8,7 +8,8 @@ TaskHandle_t TaskHandle_PageRun = 0;
 QueueHandle_t SemHandle_FileSystem = 0;
 
 uint8_t PORT_IO[16] = { TFT_D0_Pin, TFT_D1_Pin, TFT_D2_Pin, TFT_D3_Pin, TFT_D4_Pin, TFT_D5_Pin, TFT_D6_Pin, TFT_D7_Pin,
-												TFT_D8_Pin, TFT_D9_Pin, TFT_D10_Pin, TFT_D11_Pin, TFT_D12_Pin, TFT_D13_Pin, TFT_D14_Pin, TFT_D15_Pin	};
+                        TFT_D8_Pin, TFT_D9_Pin, TFT_D10_Pin, TFT_D11_Pin, TFT_D12_Pin, TFT_D13_Pin, TFT_D14_Pin, TFT_D15_Pin
+                      };
 
 SCREEN_CLASS screen(
     PORT_IO, TFT_RST_Pin, TFT_CS_Pin,
@@ -32,6 +33,7 @@ static void Init_Pages()
     PAGE_REG(Home);
     PAGE_REG(Settings);
     PAGE_REG(BattInfo);
+    PAGE_REG(DaTInfo);
     PAGE_REG(LuaScript);
     //PAGE_REG(LuaAppSel);
     //PAGE_REG(LuaAppWin);
@@ -45,7 +47,7 @@ static void Init_Pages()
     PAGE_REG(RadioCfg);
     PAGE_REG(Shell);
     PAGE_REG(SubDev);
-    
+
     page.PagePush(PAGE_Home);
 }
 
@@ -58,13 +60,13 @@ void Page_Delay(uint32_t ms)
 void Task_Display(void *pvParameters)
 {
     DisplayError_Init();
-    
+
     screen.begin();
-	screen.setRotation(2);	//	ÆÁÄ»Ðý×ªÊÊÅä
+    screen.setRotation(2);  //  ÆÁÄ»Ðý×ªÊÊÅä
     screen.fillScreen(screen.Black);
-	
-	tp_dev.begin();
-    
+
+    tp_dev.begin();
+
     Backlight_SetValue(0);
 
     lv_init();
@@ -76,7 +78,7 @@ void Task_Display(void *pvParameters)
 
     Init_Bar();
     Init_Pages();
-    
+
     Backlight_SetGradual(500);
 
     for(;;)

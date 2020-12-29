@@ -68,7 +68,7 @@ void Creat_DropDownList()
 //    style.body.grad_color = LV_COLOR_BLACK;
 //    style.body.opa = LV_OPA_80;
     lv_cont_set_style(contDropDown, LV_CONT_STYLE_MAIN, &style);
-    
+
     lv_obj_set_color(contDropDown, LV_COLOR_GRAY);
     lv_obj_set_opa_scale_enable(contDropDown, false);
 
@@ -83,11 +83,11 @@ void Creat_DropDownList()
     lv_obj_t * label = lv_label_create(contDropDown, NULL);
     lv_label_set_text(label, LV_SYMBOL_DOWN);
     lv_obj_align(label, NULL, LV_ALIGN_IN_BOTTOM_MID, 0, 0);
-    
+
     Creat_Slider();
-	
-	Creat_Button();
-	
+
+    Creat_Button();
+
 }
 
 /****************** Bright Ctrl ****************/
@@ -114,7 +114,7 @@ static void Creat_Slider()
     lv_obj_set_size(sliderBright, APP_WIN_WIDTH - 30, 20);
     lv_obj_align(sliderBright, NULL, LV_ALIGN_IN_TOP_MID, 0, 60);
     lv_obj_set_event_cb(sliderBright, SliderBright_EventHandler);
-    
+
 //    labelBright = lv_label_create(contDropDown, NULL);
 //    lv_label_set_text_fmt(labelBright, "%d%%", BacklightGet() / 10);
 //    lv_obj_align(labelBright, sliderBright, LV_ALIGN_OUT_BOTTOM_MID, 0, 5);
@@ -123,42 +123,54 @@ static void Creat_Slider()
 
 static void btn_ResetSystem_event_cb(lv_obj_t * btn, lv_event_t event)
 {
-	if (event == LV_EVENT_PRESSED) {
-		//lv_obj_set_width(btn, lv_obj_get_width(btn) + (10));
-	}
-	else if (event == LV_EVENT_RELEASED) {
-		//lv_obj_set_width(btn, lv_obj_get_width(btn) - (10));
-		//__set_FAULTMASK(1);  // 关闭所有中断
-	    NVIC_SystemReset();  // 复位
-	}
-	else if (event == LV_EVENT_LONG_PRESSED) {
-		//lv_obj_del(btn);
-	}
+    if (event == LV_EVENT_PRESSED)
+    {
+        //lv_obj_set_width(btn, lv_obj_get_width(btn) + (10));
+    }
+    else if (event == LV_EVENT_RELEASED)
+    {
+        //lv_obj_set_width(btn, lv_obj_get_width(btn) - (10));
+        //__set_FAULTMASK(1);  // 关闭所有中断
+        NVIC_SystemReset();  // 复位
+    }
+    else if (event == LV_EVENT_LONG_PRESSED)
+    {
+        //lv_obj_del(btn);
+    }
 }
 
 static void btn_ShutdownSystem_event_cb(lv_obj_t * btn, lv_event_t event)
 {
-	if (event == LV_EVENT_PRESSED) {
-		//lv_obj_set_width(btn, lv_obj_get_width(btn) + (10));
-	}
-	else if (event == LV_EVENT_RELEASED) {
-		//lv_obj_set_width(btn, lv_obj_get_width(btn) - (10));
-		Power_Shutdown();
-	}
-	else if (event == LV_EVENT_LONG_PRESSED) {
-		//lv_obj_del(btn);
-	}
+    if (event == LV_EVENT_PRESSED)
+    {
+        //lv_obj_set_width(btn, lv_obj_get_width(btn) + (10));
+    }
+    else if (event == LV_EVENT_RELEASED)
+    {
+        //lv_obj_set_width(btn, lv_obj_get_width(btn) - (10));
+        Power_Shutdown();
+    }
+    else if (event == LV_EVENT_LONG_PRESSED)
+    {
+        //lv_obj_del(btn);
+    }
 }
 
 static void Creat_Button()
 {
-	btn_ResetSystem = lv_btn_create(contDropDown, NULL);
-	lv_obj_align(btn_ResetSystem, sliderBright, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 60);
-	lv_obj_set_event_cb(btn_ResetSystem, btn_ResetSystem_event_cb);
-	
-	btn_ShutdownSystem = lv_btn_create(contDropDown, NULL);
-	lv_obj_align(btn_ShutdownSystem, btn_ResetSystem, LV_ALIGN_OUT_RIGHT_MID, 30, 0);
-	lv_obj_set_event_cb(btn_ShutdownSystem, btn_ShutdownSystem_event_cb);
+    lv_obj_t * btn_l;
+    btn_ResetSystem = lv_btn_create(contDropDown, NULL);
+    lv_obj_align(btn_ResetSystem, sliderBright, LV_ALIGN_OUT_BOTTOM_LEFT, 0, 60);
+    lv_obj_set_event_cb(btn_ResetSystem, btn_ResetSystem_event_cb);
+    
+    btn_l = lv_label_create(btn_ResetSystem, NULL);
+    lv_label_set_text(btn_l, "Reset");
+
+    btn_ShutdownSystem = lv_btn_create(contDropDown, NULL);
+    lv_obj_align(btn_ShutdownSystem, btn_ResetSystem, LV_ALIGN_OUT_RIGHT_MID, 30, 0);
+    lv_obj_set_event_cb(btn_ShutdownSystem, btn_ShutdownSystem_event_cb);
+    btn_l = lv_label_create(btn_ShutdownSystem, btn_l);
+    lv_label_set_text(btn_l, "Shut\ndown");
 }
 
 

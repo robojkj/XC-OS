@@ -3,6 +3,8 @@
 #include "BV_Player/BV_Player.h"
 #include "BSP/BSP.h"
 
+#define BVFIFO_RX_BUFFER_SIZE (6 * 1024)
+
 static lv_obj_t * appWindow;
 
 static uint8_t* BvBuffer;
@@ -44,8 +46,8 @@ static void Setup()
 {
     lv_obj_move_foreground(appWindow);
     taskBvPlayer = lv_task_create(Task_BvPlyaerUpdate, 33, LV_TASK_PRIO_MID, 0);
-    uint32_t buffSize = MemPool_GetResidueSize();
-    BvBuffer = (uint8_t*)MemPool_Malloc(buffSize);
+    uint32_t buffSize = BVFIFO_RX_BUFFER_SIZE;
+    BvBuffer = (uint8_t*)ta_alloc(buffSize);
     memset(BvBuffer, 0, buffSize);
     BvPlayer = new BV_Player(BvBuffer, buffSize);
     if(!BvPlayer->OpenVideo(BvFilePath))
@@ -66,7 +68,7 @@ static void Setup()
   */
 static void Exit()
 {
-    MemPool_Free(BvBuffer);
+    ta_free(BvBuffer);
     BvPlayer->CloseVideo();
     delete BvPlayer;
     lv_task_del(taskBvPlayer);

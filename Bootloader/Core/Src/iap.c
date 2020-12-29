@@ -86,7 +86,7 @@ void iap_schedule(void)
 	
 	HAL_Delay(500);
 	
-	printf("boot init\r\n");
+	//printf("boot init\r\n");
 	/*
 	while (1)
 	{

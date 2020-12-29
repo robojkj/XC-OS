@@ -3,10 +3,10 @@
 
 /***************** ª˘±æ…Ë÷√ *****************/
 #define XC_VERSION_HW               "v2.1"
-#define XC_VERSION_SW               "v3.01"
+#define XC_VERSION_SW               "v3.1"
 #define XC_OS_NAME                  "XC-OS"
 #define XC_CPU_NAME                 "STM32F429VGT6"
-#define XC_CPU_RATE_MHZ             (180)
+#define XC_CPU_RATE_MHZ             (216)
 #define XC_KB(b)                    ((b)*1024)
 #define XC_ROM_SIZE                 (XC_KB(1024))
 #define XC_RAM_SIZE                 (XC_KB(192))

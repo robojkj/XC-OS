@@ -13,5 +13,6 @@ void SettingsSound_EventHandler(lv_obj_t * obj, lv_event_t event);
 void SettingsBattery_EventHandler(lv_obj_t * obj, lv_event_t event);
 void SettingsRadio_EventHandler(lv_obj_t * obj, lv_event_t event);
 void SettingsAbout_EventHandler(lv_obj_t * obj, lv_event_t event);
+void SettingsDateAndTime_EventHandler(lv_obj_t * obj, lv_event_t event);
 
 #endif

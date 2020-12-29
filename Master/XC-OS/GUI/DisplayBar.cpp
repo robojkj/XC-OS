@@ -76,9 +76,17 @@ static void Task_UpdateStatusBar(lv_task_t * task)
     lv_label_set_text_fmt(labelCPUusage, LV_SYMBOL_LOOP"%d%%", FreeRTOS_GetCPUUsage());
 
     /* ±º‰œ‘ æ*/
-    uint16_t hh = (millis() / (3600 * 1000)) % 100;
-    uint16_t mm = (millis() / (60 * 1000)) % 60;
-    uint16_t ss = (millis() / 1000) % 60;
+    //uint16_t hh = (millis() / (3600 * 1000)) % 100;
+    //uint16_t mm = (millis() / (60 * 1000)) % 60;
+    //uint16_t ss = (millis() / 1000) % 60;
+    
+    RTC_TimeTypeDef RTC_TimeStructure;
+    RTC_GetTime(RTC_Format_BIN, &RTC_TimeStructure);
+    
+    uint8_t hh = RTC_TimeStructure.RTC_Hours;
+    uint8_t mm = RTC_TimeStructure.RTC_Minutes;
+    uint8_t ss = RTC_TimeStructure.RTC_Seconds;
+    
     lv_label_set_text_fmt(labelTime, "%02d:%02d:%02d", hh, mm, ss);
 }
 

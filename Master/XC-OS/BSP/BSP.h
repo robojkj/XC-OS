@@ -3,8 +3,8 @@
 
 #include "Arduino.h"
 
-#include "BSP_MemoryPool.h"
-
+//#include "BSP_MemoryPool.h"
+#include "tinyalloc/tinyalloc.h"
 
 /*Motor*/
 void Motor_SetEnable(bool en);
@@ -24,11 +24,11 @@ uint16_t Audio_ToneGetVolume();
 void Audio_NoTone();
 void Audio_Tone(float freq);
 void Audio_Tone(float freq, uint32_t time);
-
+/*
 uint32_t MemPool_GetResidueSize();
 void MemPool_Clear(uint8_t n = 0);
 void MemPool_ALLFree();
-
+*/
 /*Backlight*/
 uint16_t Backlight_GetValue();
 void Backlight_SetValue(int16_t val);

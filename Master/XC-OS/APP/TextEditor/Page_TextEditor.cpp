@@ -266,7 +266,7 @@ static void Exit()
     if(!IsEditingLocked)
     {
         lv_obj_clean(appWindow);
-        MemPool_Free(TextBufferAddr);
+        ta_free(TextBufferAddr);
         TextBufferAddr = NULL;
 #if 0
         TextFile.close();

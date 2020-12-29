@@ -61,9 +61,10 @@ ScaleFactorInfo sfi;        //  0x124 =   292
 SideInfo si;                //  0x148 =   328
 FrameHeader fh;             //   0x38 =    56
 #else
-#include "BSP/BSP_MemoryPool.h"
-#define malloc	MemPool_Malloc
-#define free	MemPool_Free
+//#include "BSP/BSP_MemoryPool.h"
+#include "tinyalloc/tinyalloc.h"
+#define malloc	ta_alloc
+#define free	ta_free
 #endif
 
 /**************************************************************************************

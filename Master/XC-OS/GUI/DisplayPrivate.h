@@ -68,6 +68,7 @@ typedef enum
     /*”√ªß“≥√Ê*/
     PAGE_About,
     PAGE_BattInfo,
+    PAGE_DaTInfo,
     PAGE_BvPlayer,
     PAGE_FileExplorer,
     PAGE_Game,

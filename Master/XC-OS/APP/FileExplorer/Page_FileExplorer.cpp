@@ -214,7 +214,7 @@ static void OpenTextFile(String filename)
 		/*文件长度是否大于缓冲区长度*/
 		if (file.getSize() < TextBuffSize)
 		{
-			char* pText = (char*)MemPool_Malloc(TextBuffSize);
+			char* pText = (char*)ta_alloc(TextBuffSize);
 			/*清缓冲区*/
 			memset(pText, 0, TextBuffSize);
 			/*载入缓冲区*/

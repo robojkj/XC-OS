@@ -35,6 +35,8 @@ void Task_PageRun(void *pvParameters);
 void Task_Communicate(void *pvParameters);
 void Task_LuaScript(void *pvParameters);
 void Task_WavPlayer(void *pvParameters);
+void Task_Wireless(void *pvParameters);
+void Task_USB_MSC(void *pvParameters);
 
 /*TaskHandle*/
 extern TaskHandle_t TaskHandle_LuaScript;
@@ -42,6 +44,8 @@ extern TaskHandle_t TaskHandle_WavPlayer;
 extern TaskHandle_t TaskHandle_Display;
 extern TaskHandle_t TaskHandle_PageRun;
 extern TaskHandle_t TaskHandle_Communicate;
+extern TaskHandle_t TaskHandle_Wireless;
+extern TaskHandle_t TaskHandle_USB_MSC;
 
 /*Timer Functions*/
 void Task_MotorRunning(TimerHandle_t xTimer);
@@ -49,7 +53,6 @@ void Task_BattInfoUpdate(TimerHandle_t xTimer);
 void Task_IMU_Process(TimerHandle_t xTimer);
 void Task_SensorInfoUpdate(TimerHandle_t xTimer);
 void Task_RTC_Update(TimerHandle_t xTimer);
-void Task_WirelessComm(TimerHandle_t xTimer);
 
 
 /*TimerHandle*/

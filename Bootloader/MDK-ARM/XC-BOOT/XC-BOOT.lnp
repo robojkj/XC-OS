@@ -1,4 +1,4 @@
---cpu=Cortex-M4.fp.sp
+--cpu=Cortex-M4.fp
 "xc-boot\startup_stm32f429xx.o"
 "xc-boot\main.o"
 "xc-boot\gpio.o"

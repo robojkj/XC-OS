@@ -22,6 +22,7 @@ static lv_settings_item_t main_menu_items[] =
     MENU_ITEM_DEF(Battery, "Battery info and power control"),
     MENU_ITEM_DEF(Radio,   "Radio config and detection"),
     MENU_ITEM_DEF(About,   "System info"),
+    MENU_ITEM_DEF(DateAndTime,   "Date and time change"),
     ITEM_END_DEF
 };
 
